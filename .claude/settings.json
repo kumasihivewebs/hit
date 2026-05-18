@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p /home/quarjo/hit/src/app/programs/\\\\[slug\\\\] /home/quarjo/hit/src/app/innovation-lab /home/quarjo/hit/src/app/research /home/quarjo/hit/src/app/admissions /home/quarjo/hit/src/app/community /home/quarjo/hit/src/app/careers)"
+    ],
+    "additionalDirectories": [
+      "/home/quarjo/hit/src/app/programs"
+    ]
+  }
+}
