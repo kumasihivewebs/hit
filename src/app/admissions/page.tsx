@@ -302,9 +302,9 @@ export default function AdmissionsPage() {
                 </button>
                 <p className="text-xs text-slate-500 text-center">
                   By submitting, you agree to our{" "}
-                  <a href="#" className="underline hover:text-slate-300">
+                  <Link href="/privacy" className="underline hover:text-slate-300">
                     Privacy Policy
-                  </a>
+                  </Link>
                   . We&apos;ll never share your data without consent.
                 </p>
               </form>
@@ -329,20 +329,20 @@ export default function AdmissionsPage() {
             >
               Book a Free Call
             </a>
-          </div>
+          </FadeIn>
         </section>
 
         {/* FAQs */}
         <section className="w-full py-20 bg-slate-950 border-t border-white/10">
           <div className="section-container max-w-3xl mx-auto">
-            <div className="space-y-4 mb-12">
+            <FadeIn className="space-y-4 mb-12">
               <p className="text-orange-400 font-semibold uppercase tracking-wider text-sm">
                 FAQ
               </p>
               <h2 className="text-3xl sm:text-4xl font-bold">
                 Common Questions
               </h2>
-            </div>
+            </FadeIn>
             <div className="space-y-3">
               {FAQS.map((faq, i) => (
                 <div
