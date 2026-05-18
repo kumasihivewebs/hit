@@ -82,7 +82,12 @@ export default function AdmissionsPage() {
             <div className="absolute top-20 right-1/4 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-green-600/10 rounded-full blur-3xl" />
           </div>
-          <div className="section-container relative z-10 max-w-3xl mx-auto text-center space-y-6">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="section-container relative z-10 max-w-3xl mx-auto text-center space-y-6"
+          >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-600/10 border border-green-600/30">
               <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
               <span className="text-green-300 text-sm font-semibold">
@@ -111,25 +116,25 @@ export default function AdmissionsPage() {
                 Scholarships available
               </span>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* Process Steps */}
         <section className="w-full py-20 bg-black border-t border-white/10">
           <div className="section-container">
-            <div className="space-y-4 mb-16">
+            <FadeIn className="space-y-4 mb-16">
               <p className="text-orange-400 font-semibold uppercase tracking-wider text-sm">
                 How It Works
               </p>
               <h2 className="text-3xl sm:text-4xl font-bold">
                 The Admissions Process
               </h2>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            </FadeIn>
+            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {STEPS.map((step, i) => (
-                <div key={step.step} className="relative space-y-4">
+                <StaggerItem key={step.step} className="relative space-y-4">
                   {i < STEPS.length - 1 && (
-                    <div className="hidden lg:block absolute top-7 left-[calc(100%_-_24px)] w-full h-px bg-white/10 z-0" />
+                    <div className="hidden lg:block absolute top-7 left-[calc(100%-24px)] w-full h-px bg-white/10 z-0" />
                   )}
                   <div className="relative z-10 w-14 h-14 rounded-full bg-orange-600/20 border border-orange-600/40 flex items-center justify-center">
                     <span className="text-orange-400 font-bold">{step.step}</span>
@@ -138,15 +143,15 @@ export default function AdmissionsPage() {
                   <p className="text-slate-300 text-sm leading-relaxed">
                     {step.description}
                   </p>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </div>
         </section>
 
         {/* Application Form */}
         <section id="apply" className="w-full py-20 bg-slate-950 border-t border-white/10">
-          <div className="section-container max-w-2xl mx-auto">
+          <FadeIn className="section-container max-w-2xl mx-auto">
             <div className="space-y-4 mb-12">
               <p className="text-orange-400 font-semibold uppercase tracking-wider text-sm">
                 Apply Now
@@ -304,12 +309,12 @@ export default function AdmissionsPage() {
                 </p>
               </form>
             )}
-          </div>
+          </FadeIn>
         </section>
 
         {/* Schedule Call */}
         <section id="schedule" className="w-full py-20 bg-black border-t border-white/10">
-          <div className="section-container max-w-2xl mx-auto text-center space-y-6">
+          <FadeIn className="section-container max-w-2xl mx-auto text-center space-y-6">
             <h2 className="text-3xl sm:text-4xl font-bold">
               Prefer to talk first?
             </h2>
