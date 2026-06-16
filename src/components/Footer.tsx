@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { NAV_LINKS, SOCIAL_LINKS } from "@/constants/navigation";
 
@@ -19,15 +20,27 @@ export const Footer = () => {
         >
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-1 space-y-4">
-            <div className="flex items-center gap-2 text-2xl font-bold">
-              <div className="w-8 h-8 bg-linear-to-br from-orange-400 to-orange-600 rounded-lg flex items-center justify-center text-white font-bold">
-                H
-              </div>
-              <span>HiT</span>
-            </div>
+            <Image
+              src="/HIT%20New%20Logo%20Transp-bg.png"
+              alt="Hive Institute of Technology"
+              width={220}
+              height={110}
+              unoptimized
+              className="h-14 w-44 object-contain object-left"
+            />
             <p className="text-slate-400 text-sm">
-              Practical technology education for Africa&apos;s future.
+              Practical training in innovation, emerging technologies, and
+              hands-on problem solving.
             </p>
+            <div className="space-y-1 text-sm text-slate-400">
+              <p>Kentinkrono, Kumasi</p>
+              <a href="tel:+233204343066" className="block hover:text-white transition-colors">
+                020 434 3066
+              </a>
+              <a href="mailto:info@hiveinstitute.co" className="block hover:text-white transition-colors">
+                info@hiveinstitute.co
+              </a>
+            </div>
           </div>
 
           {/* Navigation Links */}
@@ -35,7 +48,7 @@ export const Footer = () => {
             <h3 className="font-semibold text-sm uppercase tracking-wider">
               Platform
             </h3>
-            {NAV_LINKS.slice(0, 3).map((link) => (
+            {NAV_LINKS.slice(0, 2).map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
@@ -51,7 +64,7 @@ export const Footer = () => {
             <h3 className="font-semibold text-sm uppercase tracking-wider">
               Resources
             </h3>
-            {NAV_LINKS.slice(3).map((link) => (
+            {NAV_LINKS.slice(2).map((link) => (
               <Link
                 key={link.label}
                 href={link.href}

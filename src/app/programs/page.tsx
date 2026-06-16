@@ -8,14 +8,14 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Programs — HiT",
   description:
-    "Explore HiT's engineering, AI, robotics, and design programs. Industry-driven, project-based learning for Africa's next generation of tech leaders.",
+    "Explore HiT's practical short courses in Flutter, digital marketing, IoT, computer science, digital fabrication, and business management.",
 };
 
 export default function ProgramsPage() {
   return (
     <div className="w-full flex flex-col min-h-screen bg-slate-950">
       <Navbar />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         {/* Hero */}
         <section className="relative w-full py-24 sm:py-32 bg-linear-to-b from-slate-950 via-slate-950 to-black overflow-hidden">
           <div className="absolute inset-0 pointer-events-none">
@@ -28,25 +28,25 @@ export default function ProgramsPage() {
                 Our Programs
               </p>
               <h1 className="text-5xl sm:text-6xl font-black leading-tight">
-                Master Modern{" "}
+                Practical Short{" "}
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-orange-600">
-                  Technology
+                  Courses
                 </span>
               </h1>
               <p className="text-xl text-slate-300 leading-relaxed">
-                Eight industry-driven programs that combine deep theory with
-                hands-on project experience. Build real systems. Solve real
-                problems. Launch your career.
+                Three-month courses built around innovation, emerging
+                technologies, and hands-on practicality, with certificates
+                awarded through the KNUST pathway.
               </p>
               <div className="flex flex-wrap justify-center gap-4 pt-4 text-sm text-slate-400">
                 <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-                  6–12 month programs
+                  3-month programs
                 </span>
                 <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-                  Project-based learning
+                  GHC 1200 fee
                 </span>
                 <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-                  Industry mentorship
+                  Early discounts available
                 </span>
               </div>
             </FadeInOnLoad>
@@ -106,8 +106,8 @@ export default function ProgramsPage() {
               Not sure which program is right for you?
             </h2>
             <p className="text-slate-300 text-lg">
-              Book a free 30-minute call with one of our advisors. We&apos;ll
-              help you find the best fit for your goals and background.
+              Talk to the admissions team about your goals, schedule, and the
+              short course that best fits where you want to go next.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Link

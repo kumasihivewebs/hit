@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { FadeIn, FadeInOnLoad, StaggerContainer, StaggerItem } from "@/components/ui/Animate";
+import { FadeIn, FadeInOnLoad } from "@/components/ui/Animate";
 import { PROGRAMS } from "@/constants/programs";
 import type { Metadata } from "next";
 
@@ -32,7 +32,7 @@ export default async function ProgramDetailPage({ params }: Props) {
   return (
     <div className="w-full flex flex-col min-h-screen bg-slate-950">
       <Navbar />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         {/* Hero */}
         <section className="relative w-full py-24 sm:py-32 bg-linear-to-b from-slate-950 to-black overflow-hidden">
           <div className="absolute inset-0 pointer-events-none">
@@ -65,6 +65,9 @@ export default async function ProgramDetailPage({ params }: Props) {
                 <div className="flex flex-wrap gap-4">
                   <span className="px-4 py-2 rounded-full bg-orange-600/10 border border-orange-600/30 text-orange-300 text-sm font-semibold">
                     {program.duration}
+                  </span>
+                  <span className="px-4 py-2 rounded-full bg-green-600/10 border border-green-600/30 text-green-300 text-sm font-semibold">
+                    {program.fee}
                   </span>
                   <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-slate-300 text-sm">
                     {program.prerequisites}
@@ -133,14 +136,14 @@ export default async function ProgramDetailPage({ params }: Props) {
           </div>
         </section>
 
-        {/* Career Outcomes */}
+        {/* Course Outcomes */}
         <section className="w-full py-20 bg-slate-950 border-t border-white/10">
           <FadeIn className="section-container max-w-5xl mx-auto">
             <p className="text-orange-400 font-semibold uppercase tracking-wider text-sm mb-4">
-              Career Outcomes
+              Outcomes and Pathways
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold mb-10">
-              Where Graduates Work
+              What This Course Opens Up
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
               <div>
@@ -160,7 +163,7 @@ export default async function ProgramDetailPage({ params }: Props) {
               </div>
               <div>
                 <p className="text-slate-400 text-sm mb-4 uppercase tracking-wider font-semibold">
-                  Hiring Companies
+                  Certificates and Access
                 </p>
                 <div className="flex flex-wrap gap-3">
                   {program.companies.map((company) => (
@@ -183,15 +186,15 @@ export default async function ProgramDetailPage({ params }: Props) {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-600/10 border border-green-600/30">
               <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
               <span className="text-green-300 text-sm font-semibold">
-                Applications Open — Next Cohort Starts Soon
+                Applications Open — Early Discounts Available
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold">
               Ready to get started?
             </h2>
             <p className="text-slate-300 text-lg">
-              Apply to the {program.title} program today. No prior experience
-              needed — just commitment to learning.
+              Apply to the {program.title} course today. Early applicants can
+              access the available discount slots.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Link

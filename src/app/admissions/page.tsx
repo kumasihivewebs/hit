@@ -13,52 +13,52 @@ const STEPS = [
     step: "01",
     title: "Submit Application",
     description:
-      "Fill out the online application form with your background, goals, and which program interests you. Takes about 15 minutes.",
+      "Share your contact details, course interest, background, and schedule preference.",
   },
   {
     step: "02",
-    title: "Technical Assessment",
+    title: "Admissions Call",
     description:
-      "A short, self-paced online assessment tailored to your chosen program. Tests problem-solving and logical thinking — not prior knowledge.",
+      "Our team follows up to answer questions, confirm fit, and explain available discount slots.",
   },
   {
     step: "03",
-    title: "Interview",
+    title: "Enrollment",
     description:
-      "A 30-minute conversation with a HiT instructor to understand your motivation, goals, and how we can best support your journey.",
+      "Accepted applicants complete enrollment and receive course schedule details.",
   },
   {
     step: "04",
-    title: "Enrollment",
+    title: "Start Building",
     description:
-      "If accepted, you&apos;ll receive an offer letter, choose your cohort start date, and complete enrollment within 7 days.",
+      "Join the three-month practical learning experience in Kumasi or through available flexible options.",
   },
 ];
 
 const FAQS = [
   {
     q: "Do I need prior experience to apply?",
-    a: "Most programs require only basic programming or technical familiarity. The Product Design program has no prerequisites at all. Our assessments are designed to evaluate potential, not existing expertise.",
+    a: "Several courses are beginner friendly. IoT and fabrication benefit from curiosity about hardware or design, but the application is built to understand your goals rather than screen out new learners.",
   },
   {
-    q: "How long does the application process take?",
-    a: "From submission to offer letter, expect 2–4 weeks. We run rolling admissions, so applying early improves your chances of securing your preferred cohort start date.",
+    q: "How long are the courses?",
+    a: "The short courses run for 3 months.",
   },
   {
     q: "What is the cost of the programs?",
-    a: "Tuition varies by program length and is shared after acceptance. We offer income-share agreements, scholarships, and deferred payment plans so that cost is never a barrier for qualified candidates.",
+    a: "The published fee in the HiT materials is GHC 1200 per short course. Discounts are available for the first 20 applicants.",
   },
   {
     q: "Can I study part-time or remotely?",
-    a: "Lab-intensive programs (Robotics, Embedded Systems) require on-site attendance. Software-focused programs offer a hybrid model. Speak to an advisor for specifics.",
+    a: "School hours are listed as 10 am to 3 pm, with evening and weekend options also available. Speak to admissions to confirm the option for your course.",
   },
   {
-    q: "When does the next cohort start?",
-    a: "We run three cohorts per year — January, May, and September. The next intake opens in September 2025. Apply now to secure your spot.",
+    q: "Will I receive a certificate?",
+    a: "The HiT materials state that certificates from these courses will be awarded by KNUST.",
   },
   {
-    q: "What happens if I don't get accepted?",
-    a: "We provide feedback on every application. Many successful students re-applied after addressing the specific gaps we highlighted. There's no penalty for reapplying.",
+    q: "Who can I call before applying?",
+    a: "You can call 020 434 3066 or 050 136 0300 for admissions questions.",
   },
 ];
 
@@ -75,7 +75,7 @@ export default function AdmissionsPage() {
   return (
     <div className="w-full flex flex-col min-h-screen bg-slate-950">
       <Navbar />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         {/* Hero */}
         <section className="relative w-full py-24 sm:py-32 bg-linear-to-b from-slate-950 to-black overflow-hidden">
           <div className="absolute inset-0 pointer-events-none">
@@ -91,7 +91,7 @@ export default function AdmissionsPage() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-600/10 border border-green-600/30">
               <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
               <span className="text-green-300 text-sm font-semibold">
-                Applications Open — September 2025 Cohort
+                Applications Open — Discounts for First 20 Applicants
               </span>
             </div>
             <h1 className="text-5xl sm:text-6xl font-black leading-tight">
@@ -102,18 +102,18 @@ export default function AdmissionsPage() {
             </h1>
             <p className="text-xl text-slate-300 leading-relaxed">
               No prior experience required for most programs — just the
-              commitment to learn and build. Limited spots are available each
-              cohort.
+              commitment to learn and build through practical short courses in
+              emerging technologies.
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-400">
               <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-                2–4 week process
+                GHC 1200 fee
               </span>
               <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-                Rolling admissions
+                3-month courses
               </span>
               <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-                Scholarships available
+                KNUST certificates
               </span>
             </div>
           </motion.div>
@@ -160,8 +160,8 @@ export default function AdmissionsPage() {
                 Start Your Application
               </h2>
               <p className="text-slate-300">
-                Takes about 15 minutes. Our team reviews every application and
-                responds within 5 business days.
+                This frontend form is ready for the backend integration phase.
+                For now, it collects the fields admissions will need.
               </p>
             </div>
 
@@ -173,7 +173,8 @@ export default function AdmissionsPage() {
                 </h3>
                 <p className="text-slate-300">
                   Thank you for applying. We&apos;ll review your application and
-                  get back to you within 5 business days with next steps.
+                  follow up with course details, schedule options, and next
+                  steps.
                 </p>
                 <Link
                   href="/programs"
@@ -206,7 +207,7 @@ export default function AdmissionsPage() {
                     <input
                       required
                       type="text"
-                      placeholder="Okafor"
+                      placeholder="Mensah"
                       className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white/10 transition-colors"
                     />
                   </div>
@@ -230,7 +231,7 @@ export default function AdmissionsPage() {
                   </label>
                   <input
                     type="tel"
-                    placeholder="+234 800 000 0000"
+                    placeholder="+233 20 434 3066"
                     className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white/10 transition-colors"
                   />
                 </div>
@@ -242,7 +243,7 @@ export default function AdmissionsPage() {
                   <input
                     required
                     type="text"
-                    placeholder="Nigeria"
+                    placeholder="Ghana"
                     className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white/10 transition-colors"
                   />
                 </div>
@@ -265,6 +266,19 @@ export default function AdmissionsPage() {
                         {p.title}
                       </option>
                     ))}
+                  </select>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-semibold text-slate-300">
+                    Preferred Schedule
+                  </label>
+                  <select className="w-full px-4 py-3 rounded-lg bg-slate-900 border border-white/10 text-white focus:outline-none focus:border-orange-500 transition-colors">
+                    <option value="">Select an option</option>
+                    <option value="day">Daytime: 10 am to 3 pm</option>
+                    <option value="evening">Evening option</option>
+                    <option value="weekend">Weekend option</option>
+                    <option value="not-sure">Not sure yet</option>
                   </select>
                 </div>
 
@@ -320,14 +334,14 @@ export default function AdmissionsPage() {
             </h2>
             <p className="text-slate-300 text-lg">
               Book a free 30-minute call with one of our admissions advisors.
-              We&apos;ll walk you through the programs, answer your questions,
-              and help you decide if HiT is the right fit.
+              We&apos;ll walk you through the courses, certificate pathway, fee,
+              and available schedule options.
             </p>
             <a
-              href="#"
+              href="tel:+233204343066"
               className="inline-flex items-center justify-center px-8 py-4 border border-white/20 hover:bg-white/10 text-white font-semibold rounded-lg transition-colors text-lg"
             >
-              Book a Free Call
+              Call 020 434 3066
             </a>
           </FadeIn>
         </section>

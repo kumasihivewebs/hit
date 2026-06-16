@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description: "How Hive Institute of Technology collects, uses, and protects your personal information.",
 };
 
-const LAST_UPDATED = "May 18, 2025";
+const LAST_UPDATED = "June 16, 2026";
 
 export default function PrivacyPage() {
   return (
     <div className="w-full flex flex-col min-h-screen bg-slate-950">
       <Navbar />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <section className="w-full py-20 sm:py-28">
           <div className="section-container max-w-3xl mx-auto">
             <div className="space-y-4 mb-12">
@@ -122,8 +122,8 @@ export default function PrivacyPage() {
                 </ul>
                 <p>
                   To exercise these rights, email us at{" "}
-                  <a href="mailto:privacy@hit.edu" className="text-orange-400 hover:text-orange-300">
-                    privacy@hit.edu
+                  <a href="mailto:info@hiveinstitute.co" className="text-orange-400 hover:text-orange-300">
+                    info@hiveinstitute.co
                   </a>
                   .
                 </p>
@@ -161,11 +161,12 @@ export default function PrivacyPage() {
               <section className="space-y-4">
                 <h2 className="text-xl font-bold text-white">10. Contact</h2>
                 <p>
-                  Questions about this policy? Contact our Data Protection Officer at{" "}
-                  <a href="mailto:privacy@hit.edu" className="text-orange-400 hover:text-orange-300">
-                    privacy@hit.edu
+                  Questions about this policy? Contact us at{" "}
+                  <a href="mailto:info@hiveinstitute.co" className="text-orange-400 hover:text-orange-300">
+                    info@hiveinstitute.co
                   </a>{" "}
-                  or write to us at: Hive Institute of Technology, Lagos, Nigeria.
+                  or write to us at: Hive Institute of Technology,
+                  Kentinkrono, Kumasi, Ghana.
                 </p>
               </section>
             </div>

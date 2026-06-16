@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NAV_LINKS } from "@/constants/navigation";
@@ -24,11 +25,16 @@ export const Navbar = () => {
       <div className="section-container flex items-center justify-between h-16 sm:h-20">
         {/* Logo */}
         <motion.div whileHover={{ scale: 1.05 }}>
-          <Link href="/" className="flex items-center gap-3 text-2xl font-bold">
-            <div className="w-8 h-8 bg-linear-to-br from-orange-400 to-orange-600 rounded-lg flex items-center justify-center text-white font-bold">
-              H
-            </div>
-            <span className="hidden sm:inline">HiT</span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/HIT%20New%20Logo%20Transp-bg.png"
+              alt="Hive Institute of Technology"
+              width={180}
+              height={90}
+              priority
+              unoptimized
+              className="h-10 w-32 object-contain object-left sm:h-12 sm:w-40"
+            />
           </Link>
         </motion.div>
 
@@ -38,7 +44,7 @@ export const Navbar = () => {
             <Link
               key={link.label}
               href={link.href}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 ${
                 isActive(link.href)
                   ? "text-white bg-white/10"
                   : "text-slate-300 hover:text-white hover:bg-white/5"
@@ -61,10 +67,12 @@ export const Navbar = () => {
           {/* Mobile Menu Button */}
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 hover:bg-white/10 rounded-lg transition-colors"
+            className="lg:hidden p-2 hover:bg-white/10 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             aria-label="Toggle menu"
+            aria-expanded={isOpen}
+            aria-controls="mobile-nav"
           >
             <div className="w-6 h-6 flex flex-col justify-center gap-1.5">
               <motion.div
@@ -89,6 +97,7 @@ export const Navbar = () => {
         animate={isOpen ? { height: "auto" } : { height: 0 }}
         initial={{ height: 0 }}
         transition={{ duration: 0.3 }}
+        id="mobile-nav"
         className="lg:hidden overflow-hidden border-t border-white/10"
       >
         <div className="section-container py-4 space-y-1">
@@ -96,7 +105,7 @@ export const Navbar = () => {
             <Link
               key={link.label}
               href={link.href}
-              className={`block px-4 py-2.5 rounded-lg transition-colors text-sm font-medium ${
+              className={`block px-4 py-2.5 rounded-lg transition-colors text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 ${
                 isActive(link.href)
                   ? "text-white bg-white/10"
                   : "text-slate-300 hover:text-white hover:bg-white/10"

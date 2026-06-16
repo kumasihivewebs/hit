@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <div className="w-full flex flex-col min-h-screen bg-slate-950">
       <Navbar />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <HeroSection />
         <AboutSection />
         <ProgramsSection />

@@ -15,15 +15,20 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "HiT - Hive Institute of Technology",
   description:
-    "Practical technology education for Africa's future. Engineering, AI, robotics, and innovation.",
+    "Practical short courses in emerging technologies from Hive Institute of Technology in Kumasi.",
+  icons: {
+    icon: [{ url: "/icon.png", type: "image/png" }],
+    apple: [{ url: "/apple-icon.png", type: "image/png" }],
+  },
   keywords: [
     "technology",
     "education",
-    "engineering",
-    "AI",
-    "robotics",
-    "startup",
-    "Africa",
+    "Kumasi",
+    "Flutter",
+    "IoT",
+    "digital marketing",
+    "digital fabrication",
+    "Ghana",
   ],
   authors: [{ name: "HiT" }],
   robots: "index, follow",
@@ -46,6 +51,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} bg-slate-950 text-white antialiased`}
         suppressHydrationWarning
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-3 focus:text-slate-950"
+        >
+          Skip to main content
+        </a>
         {children}
       </body>
     </html>

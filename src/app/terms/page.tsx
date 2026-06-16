@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description: "The terms and conditions governing use of HiT's website and enrollment in its programs.",
 };
 
-const LAST_UPDATED = "May 18, 2025";
+const LAST_UPDATED = "June 16, 2026";
 
 export default function TermsPage() {
   return (
     <div className="w-full flex flex-col min-h-screen bg-slate-950">
       <Navbar />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <section className="w-full py-20 sm:py-28">
           <div className="section-container max-w-3xl mx-auto">
             <div className="space-y-4 mb-12">
@@ -29,7 +29,7 @@ export default function TermsPage() {
               <section className="space-y-4">
                 <h2 className="text-xl font-bold text-white">1. Acceptance of Terms</h2>
                 <p>
-                  By accessing or using the HiT website (hit.edu) or enrolling in any HiT program,
+                  By accessing or using the HiT website (hiveinstitute.co) or enrolling in any HiT program,
                   you agree to be bound by these Terms of Service and our{" "}
                   <Link href="/privacy" className="text-orange-400 hover:text-orange-300">
                     Privacy Policy
@@ -76,7 +76,7 @@ export default function TermsPage() {
                 <ul className="list-disc pl-6 space-y-2">
                   <li>
                     <strong className="text-white">Before cohort start date:</strong> Full refund of
-                    any deposit, less a processing fee of ₦15,000 or equivalent.
+                    any deposit, less a processing fee communicated during enrollment.
                   </li>
                   <li>
                     <strong className="text-white">Within the first two weeks of a cohort:</strong>{" "}
@@ -155,8 +155,8 @@ export default function TermsPage() {
               <section className="space-y-4">
                 <h2 className="text-xl font-bold text-white">9. Governing Law</h2>
                 <p>
-                  These terms are governed by the laws of the Federal Republic of Nigeria. Any
-                  disputes shall be resolved through binding arbitration in Lagos, Nigeria,
+                  These terms are governed by the laws of the Republic of Ghana. Any
+                  disputes shall be resolved through binding arbitration in Kumasi, Ghana,
                   before escalating to the courts.
                 </p>
               </section>
@@ -165,8 +165,8 @@ export default function TermsPage() {
                 <h2 className="text-xl font-bold text-white">10. Contact</h2>
                 <p>
                   Questions about these terms? Email us at{" "}
-                  <a href="mailto:legal@hit.edu" className="text-orange-400 hover:text-orange-300">
-                    legal@hit.edu
+                  <a href="mailto:info@hiveinstitute.co" className="text-orange-400 hover:text-orange-300">
+                    info@hiveinstitute.co
                   </a>
                   .
                 </p>

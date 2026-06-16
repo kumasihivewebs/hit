@@ -7,32 +7,32 @@ import { Card } from "@/components/ui/Card";
 export const StartupSection = () => {
   const benefits = [
     {
-      id: "mentorship",
-      title: "Expert Mentorship",
+      id: "early-discount",
+      title: "Early Applicant Discounts",
       description:
-        "Access to successful entrepreneurs and industry veterans who guide your journey.",
+        "Discounts are available for the first 20 applicants in each intake.",
+      icon: "🏷️",
+    },
+    {
+      id: "certificate",
+      title: "KNUST Certificates",
+      description:
+        "Certificates from these short courses are awarded through the KNUST pathway referenced in the HiT materials.",
       icon: "🎓",
     },
     {
-      id: "funding",
-      title: "Funding Opportunities",
+      id: "career-access",
+      title: "Virtual Jobs and Internships",
       description:
-        "Pre-seed and seed funding access through our investor network and partners.",
-      icon: "💰",
+        "Completing students get access to virtual job and internship opportunities through HiT.",
+      icon: "💼",
     },
     {
-      id: "network",
-      title: "Investor Network",
+      id: "flexible-options",
+      title: "Evening and Weekend Options",
       description:
-        "Direct connections to VCs, angel investors, and corporate partners.",
-      icon: "🌐",
-    },
-    {
-      id: "resources",
-      title: "Resources & Tools",
-      description:
-        "Office space, cloud credits, and all the tools you need to build.",
-      icon: "🛠️",
+        "School hours run from 10 am to 3 pm, with evening and weekend options available.",
+      icon: "🕒",
     },
   ];
 
@@ -59,9 +59,9 @@ export const StartupSection = () => {
   return (
     <Section className="bg-black">
       <SectionHeading
-        subtitle="Startup Ecosystem"
-        title="Turn Ideas Into Companies"
-        description="HiT's startup incubation program provides everything you need to launch and scale your company."
+        subtitle="Admissions Offer"
+        title="A Short Course Built Around Access"
+        description="HiT pairs practical training with certificates, flexible study options, and opportunities beyond the classroom."
       />
 
       <motion.div
@@ -86,7 +86,6 @@ export const StartupSection = () => {
         ))}
       </motion.div>
 
-      {/* Success Stories */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -96,20 +95,20 @@ export const StartupSection = () => {
       >
         <Card>
           <div className="space-y-2 text-center">
-            <p className="text-3xl font-bold text-orange-400">$50M+</p>
-            <p className="text-slate-300">Total Funding Raised</p>
+            <p className="text-3xl font-bold text-orange-400">GHC 1200</p>
+            <p className="text-slate-300">Course fee</p>
           </div>
         </Card>
         <Card>
           <div className="space-y-2 text-center">
-            <p className="text-3xl font-bold text-orange-400">100+</p>
-            <p className="text-slate-300">Successful Exits</p>
+            <p className="text-3xl font-bold text-orange-400">3 Months</p>
+            <p className="text-slate-300">Training duration</p>
           </div>
         </Card>
         <Card>
           <div className="space-y-2 text-center">
-            <p className="text-3xl font-bold text-orange-400">5000+</p>
-            <p className="text-slate-300">Jobs Created</p>
+            <p className="text-3xl font-bold text-orange-400">20</p>
+            <p className="text-slate-300">Early discount slots</p>
           </div>
         </Card>
       </motion.div>

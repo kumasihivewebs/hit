@@ -7,34 +7,36 @@ import { Card } from "@/components/ui/Card";
 export const InnovationLabsSection = () => {
   const labs = [
     {
-      id: "robotics",
-      name: "Robotics Lab",
+      id: "seasoned-tutors",
+      name: "Seasoned Tutors",
       description:
-        "State-of-the-art robotics equipment. Build autonomous systems, drones, and intelligent machines.",
-      icon: "🤖",
+        "Learn from trainers with practical experience who guide students through applied work, experiments, and project delivery.",
+      icon: "👩‍🏫",
     },
     {
-      id: "hardware",
-      name: "Hardware Lab",
+      id: "practical-facilities",
+      name: "Practical Facilities",
       description:
-        "Electronics workstations, prototyping tools, and embedded systems equipment.",
-      icon: "⚙️",
+        "Access a learning environment designed to foster innovation, hands-on practice, and confidence with modern tools.",
+      icon: "🧰",
     },
     {
-      id: "ai-ml",
-      name: "AI/ML Lab",
+      id: "recognized-certificates",
+      name: "Recognized Certificates",
       description:
-        "GPU-powered workstations for machine learning research and experimentation.",
-      icon: "🧠",
+        "Courses are designed to provide value for money while preparing students for certificates recognized by partners such as KNUST.",
+      icon: "🎓",
     },
     {
-      id: "cloud",
-      name: "Cloud Infrastructure",
+      id: "jobs-internships",
+      name: "Jobs and Internships",
       description:
-        "Production-grade cloud environments. Deploy and scale real systems to millions.",
-      icon: "☁️",
+        "Students are introduced to virtual jobs and internship pathways after completing their short-course experience.",
+      icon: "💼",
     },
   ];
+
+  const partners = ["KNUST", "WLearn", "Azihub", "COTVET", "Kumasi Hive"];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -59,9 +61,9 @@ export const InnovationLabsSection = () => {
   return (
     <Section id="innovation-lab" className="bg-black">
       <SectionHeading
-        subtitle="Innovation Labs"
-        title="Where Ideas Become Reality"
-        description="Fully equipped laboratories and research spaces where students experiment, iterate, and build breakthrough technologies."
+        subtitle="Learning Environment"
+        title="The Support Around Every Course"
+        description="HiT combines experienced facilitators, practical facilities, recognized certification pathways, and partners who strengthen the student experience."
       />
 
       <motion.div
@@ -80,18 +82,32 @@ export const InnovationLabsSection = () => {
                 <p className="text-slate-300 leading-relaxed">
                   {lab.description}
                 </p>
-                <motion.div whileHover={{ x: 5 }} className="pt-4">
-                  <a
-                    href="#"
-                    className="inline-flex items-center gap-2 text-orange-400 font-semibold hover:text-orange-300 transition-colors"
-                  >
-                    Learn more <span>→</span>
-                  </a>
-                </motion.div>
               </div>
             </Card>
           </motion.div>
         ))}
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true }}
+        className="mt-16 border-t border-white/10 pt-10"
+      >
+        <p className="text-center text-sm font-semibold uppercase tracking-wider text-slate-400">
+          Partners
+        </p>
+        <div className="mt-6 flex flex-wrap justify-center gap-3">
+          {partners.map((partner) => (
+            <span
+              key={partner}
+              className="rounded-lg border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-slate-200"
+            >
+              {partner}
+            </span>
+          ))}
+        </div>
       </motion.div>
     </Section>
   );

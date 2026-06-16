@@ -30,8 +30,8 @@ export const ProgramsSection = () => {
     <Section id="programs" className="bg-black">
       <SectionHeading
         subtitle="Our Programs"
-        title="Master Modern Technology"
-        description="Industry-driven programs combining theory with hands-on project experience. Build real systems. Solve real problems."
+        title="Short Courses Built for Practical Skill"
+        description="Three-month courses in software, IoT, fabrication, marketing, and business, designed around hands-on learning and recognizable certification."
       />
 
       <motion.div
@@ -39,7 +39,7 @@ export const ProgramsSection = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
       >
         {PROGRAMS.map((program) => (
           <motion.div key={program.id} variants={itemVariants}>

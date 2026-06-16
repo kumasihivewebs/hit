@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Section } from "@/components/ui/Section";
-import { Button } from "@/components/ui/Button";
+import { buttonVariants } from "@/components/ui/Button";
 
 export const AdmissionsSection = () => {
   return (
@@ -16,12 +17,12 @@ export const AdmissionsSection = () => {
       >
         <div className="space-y-4">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-            Ready to Transform Your Career?
+            Ready to Apply for a HiT Short Course?
           </h2>
           <p className="text-xl text-slate-300">
-            Join a community of innovators, engineers, and entrepreneurs
-            building the future of technology in Africa. Limited spots available
-            each cohort.
+            Admissions are open for practical short courses in Kumasi
+            Kentinkrono. Choose a course, apply early, and secure one of the
+            available discount slots.
           </p>
         </div>
 
@@ -29,17 +30,27 @@ export const AdmissionsSection = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-600/10 border border-green-600/30">
             <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
             <span className="text-green-300 text-sm font-semibold">
-              Next Cohort Starts in 2 Months
+              Discounts Available for the First 20 Applicants
             </span>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-            <Button size="lg" className="w-full sm:w-auto">
+            <Link
+              href="/admissions"
+              className={buttonVariants({ size: "lg", className: "w-full sm:w-auto" })}
+            >
               Apply Now
-            </Button>
-            <Button size="lg" variant="outline" className="w-full sm:w-auto">
+            </Link>
+            <Link
+              href="/admissions#schedule"
+              className={buttonVariants({
+                size: "lg",
+                variant: "outline",
+                className: "w-full sm:w-auto",
+              })}
+            >
               Schedule a Call
-            </Button>
+            </Link>
           </div>
         </div>
 
@@ -53,17 +64,15 @@ export const AdmissionsSection = () => {
         >
           <div className="space-y-2">
             <p className="text-sm text-slate-400">Eligibility</p>
-            <p className="font-semibold">
-              No prior experience needed. Passion required.
-            </p>
+            <p className="font-semibold">Beginner-friendly courses available</p>
           </div>
           <div className="space-y-2">
-            <p className="text-sm text-slate-400">Application Time</p>
-            <p className="font-semibold">Typically 2-4 weeks</p>
+            <p className="text-sm text-slate-400">Fee</p>
+            <p className="font-semibold">GHC 1200 per course</p>
           </div>
           <div className="space-y-2">
             <p className="text-sm text-slate-400">Duration</p>
-            <p className="font-semibold">6-12 months depending on program</p>
+            <p className="font-semibold">3 months</p>
           </div>
         </motion.div>
       </motion.div>

@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/Button";
+import Image from "next/image";
+import Link from "next/link";
+import { buttonVariants } from "@/components/ui/Button";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -25,102 +27,108 @@ const itemVariants = {
 
 export const HeroSection = () => {
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-linear-to-b from-slate-950 via-slate-950 to-black">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{
-            y: [0, -20, 0],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{ duration: 8, repeat: Infinity }}
-          className="absolute top-20 left-10 w-96 h-96 bg-orange-600/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            y: [0, 20, 0],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{ duration: 10, repeat: Infinity, delay: 1 }}
-          className="absolute bottom-20 right-10 w-96 h-96 bg-green-600/20 rounded-full blur-3xl"
-        />
+    <section className="relative flex min-h-[76svh] w-full items-center overflow-hidden bg-black sm:min-h-[82svh]">
+      <Image
+        src="/HIT-Banner.jpg"
+        alt="Hive Institute of Technology brand banner"
+        fill
+        priority
+        sizes="100vw"
+        unoptimized
+        className="object-cover object-center opacity-40"
+      />
+      <div className="absolute inset-0 bg-linear-to-r from-black via-slate-950/90 to-slate-950/30" />
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-black to-transparent" />
+
+      <div className="absolute left-0 top-0 h-full w-1.5 bg-orange-500" />
+      <div className="absolute bottom-6 right-4 hidden max-w-xs rounded border border-white/15 bg-black/40 p-4 backdrop-blur-sm md:block">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orange-300">
+          Mantra
+        </p>
+        <p className="mt-2 text-sm text-slate-200">
+          Innovation. Practicality. Emerging Technologies.
+        </p>
       </div>
 
-      <div className="section-container relative z-10 py-20 sm:py-32">
+      <div className="section-container relative z-10 py-16 sm:py-28">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="max-w-4xl mx-auto text-center space-y-8"
+          className="max-w-3xl space-y-6 sm:space-y-8"
         >
-          {/* Badge */}
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-600/10 border border-orange-600/30"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-600/20 border border-orange-500/40 backdrop-blur"
           >
             <span className="w-2 h-2 bg-orange-400 rounded-full animate-pulse" />
             <span className="text-orange-300 text-sm font-semibold">
-              Africa&apos;s Leading Tech Institute
+              Admissions Open for Short Courses
             </span>
           </motion.div>
 
-          {/* Main Headline */}
           <motion.h1
             variants={itemVariants}
-            className="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight"
+            className="text-4xl sm:text-6xl lg:text-7xl font-black leading-tight text-white"
           >
-            <span className="block">Practical Technology</span>
-            <span className="block">
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-orange-600">
-                Education for Africa&apos;s
-              </span>
-            </span>
-            <span className="block">Future</span>
+            Get Ahead in the Next Technological Age
           </motion.h1>
 
-          {/* Subheading */}
           <motion.p
             variants={itemVariants}
-            className="text-xl sm:text-2xl text-slate-300 max-w-2xl mx-auto leading-relaxed"
+            className="max-w-2xl text-lg leading-relaxed text-slate-200 sm:text-2xl"
           >
-            Learn engineering, AI, and robotics by building real projects. Get mentored by industry experts. Launch your startup. Join Africa&apos;s next generation of tech leaders.
+            Hive Institute of Technology focuses on innovation, emerging
+            technologies, and hands-on practicality, giving students the
+            exposure and confidence to solve real problems.
           </motion.p>
 
-          {/* CTA Buttons */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8"
+            className="flex flex-col sm:flex-row gap-4 pt-4"
           >
-            <Button size="lg" className="w-full sm:w-auto">
-              Explore Programs
-            </Button>
-            <Button size="lg" variant="outline" className="w-full sm:w-auto">
+            <Link
+              href="/programs"
+              className={buttonVariants({
+                size: "lg",
+                className: "w-full sm:w-auto",
+              })}
+            >
+              Explore Courses
+            </Link>
+            <Link
+              href="/admissions"
+              className={buttonVariants({
+                size: "lg",
+                variant: "outline",
+                className: "w-full sm:w-auto bg-black/20 backdrop-blur",
+              })}
+            >
               Apply Now
-            </Button>
+            </Link>
           </motion.div>
 
-          {/* Stats Preview */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-3 gap-4 pt-12 border-t border-white/10"
+            className="grid max-w-2xl grid-cols-3 gap-3 border-t border-white/15 pt-8 sm:gap-4 sm:pt-10"
           >
-            <div className="text-center">
+            <div>
               <p className="text-3xl sm:text-4xl font-bold text-orange-400">
-                500+
+                3
               </p>
-              <p className="text-slate-400 text-sm">Students</p>
+              <p className="text-slate-300 text-sm">Months</p>
             </div>
-            <div className="text-center">
+            <div>
               <p className="text-3xl sm:text-4xl font-bold text-orange-400">
-                1.2K+
+                6
               </p>
-              <p className="text-slate-400 text-sm">Projects</p>
+              <p className="text-slate-300 text-sm">Courses</p>
             </div>
-            <div className="text-center">
+            <div>
               <p className="text-3xl sm:text-4xl font-bold text-orange-400">
-                45+
+                KNUST
               </p>
-              <p className="text-slate-400 text-sm">Startups</p>
+              <p className="text-slate-300 text-sm">Certificates</p>
             </div>
           </motion.div>
         </motion.div>
