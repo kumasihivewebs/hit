@@ -61,11 +61,6 @@ export function AdmissionsPageContent({
             the admissions team guide you toward the best course, schedule, and
             next step.
           </p>
-          <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-400">
-            <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-              Backend-connected admissions flow
-            </span>
-          </div>
         </motion.div>
       </section>
 
@@ -87,7 +82,9 @@ export function AdmissionsPageContent({
                     <div className="hidden lg:block absolute top-7 left-[calc(100%-24px)] w-full h-px bg-white/10 z-0" />
                   ) : null}
                   <div className="relative z-10 w-14 h-14 rounded-full bg-orange-600/20 border border-orange-600/40 flex items-center justify-center">
-                    <span className="text-orange-400 font-bold">{step.step}</span>
+                    <span className="text-orange-400 font-bold">
+                      {step.step}
+                    </span>
                   </div>
                   <h3 className="text-lg font-bold">{step.title}</h3>
                   <p className="text-slate-300 text-sm leading-relaxed">
@@ -105,7 +102,7 @@ export function AdmissionsPageContent({
           <div className="section-container">
             <ContentNotice
               title="Admissions Guidance Will Be Added Soon"
-              message="HiT has not published admissions steps or frequently asked questions yet. Applicants can still submit the form below and the admissions team will review it in the admin portal."
+              message="HiT has not published admissions steps or frequently asked questions yet."
             />
           </div>
         </section>
@@ -123,10 +120,7 @@ export function AdmissionsPageContent({
             <h2 className="text-3xl sm:text-4xl font-bold">
               Start Your Application
             </h2>
-            <p className="text-slate-300">
-              Each application is saved in the HiT admin portal for review and
-              also notifies the admissions team by email.
-            </p>
+
             {programs.length === 0 ? (
               <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
                 No programs are published yet. Applicants can still submit the
