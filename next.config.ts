@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const backendInternalUrl =
-  process.env.BACKEND_INTERNAL_URL || "http://localhost:8000";
+  process.env.BACKEND_INTERNAL_URL || "https://hitapi.kumasihive.com";
 
 const nextConfig: NextConfig = {
   output: "standalone",

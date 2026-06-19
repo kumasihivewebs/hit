@@ -1,4 +1,4 @@
-const DEFAULT_API_BASE_URL = "/backend-api";
+const DEFAULT_API_BASE_URL = "https://hitapi.kumasihive.com/api";
 
 function getApiBaseUrl() {
   const configuredBaseUrl =

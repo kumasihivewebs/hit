@@ -1,13 +1,8 @@
-import { COMMUNITY_EVENTS, ALUMNI_SPOTLIGHT, COMMUNITY_STATS } from "@/constants/events";
-import { OPEN_ROLES, PARTNER_COMPANIES, HIRING_STATS } from "@/constants/jobs";
-import { PROGRAMS } from "@/constants/programs";
-import { RESEARCH_AREAS, RECENT_PAPERS, RESEARCH_STATS } from "@/constants/research";
-
 function getBackendBaseUrl() {
   const baseUrl =
     process.env.BACKEND_INTERNAL_URL?.trim() ||
     process.env.NEXT_PUBLIC_API_BASE_URL?.trim() ||
-    "http://localhost:8000/api";
+    "https://hitapi.kumasihive.com/api";
 
   return baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl;
 }
@@ -25,16 +20,97 @@ async function fetchBackendJson<T>(path: string): Promise<T> {
   return response.json() as Promise<T>;
 }
 
-export type FrontendProgram = (typeof PROGRAMS)[number];
-export type FrontendEvent = (typeof COMMUNITY_EVENTS)[number];
-export type FrontendAlumni = (typeof ALUMNI_SPOTLIGHT)[number];
-export type FrontendCommunityStat = (typeof COMMUNITY_STATS)[number];
-export type FrontendRole = (typeof OPEN_ROLES)[number];
-export type FrontendPartner = (typeof PARTNER_COMPANIES)[number];
-export type FrontendHiringStat = (typeof HIRING_STATS)[number];
-export type FrontendResearchArea = (typeof RESEARCH_AREAS)[number];
-export type FrontendResearchPaper = (typeof RECENT_PAPERS)[number];
-export type FrontendResearchStat = (typeof RESEARCH_STATS)[number];
+export type FrontendProgram = {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  icon: string;
+  duration: string;
+  fee: string;
+  level: string;
+  color: string;
+  tagline: string;
+  curriculum: string[];
+  projects: string[];
+  outcomes: string[];
+  companies: string[];
+  prerequisites: string;
+};
+
+export type FrontendEvent = {
+  id: string;
+  title: string;
+  date: string;
+  type: string;
+  location: string;
+  description: string;
+  attendees: string;
+  prize: string | null;
+};
+
+export type FrontendAlumni = {
+  id: string;
+  name: string;
+  cohort: string;
+  program: string;
+  currentRole: string;
+  achievement: string;
+  image: string;
+};
+
+export type FrontendCommunityStat = {
+  label: string;
+  value: string;
+};
+
+export type FrontendRole = {
+  id: string;
+  title: string;
+  type: string;
+  location: string;
+  department: string;
+  description: string;
+  requirements: string[];
+  salary: string;
+};
+
+export type FrontendPartner = {
+  name: string;
+  logo: string;
+  roles: string;
+};
+
+export type FrontendHiringStat = {
+  label: string;
+  value: string;
+};
+
+export type FrontendResearchArea = {
+  id: string;
+  title: string;
+  icon: string;
+  description: string;
+  tags: string[];
+  lead: string;
+  status: string;
+  papers: number;
+};
+
+export type FrontendResearchPaper = {
+  id: string;
+  title: string;
+  authors: string[];
+  conference: string;
+  year: number;
+  area: string;
+  link: string;
+};
+
+export type FrontendResearchStat = {
+  label: string;
+  value: string;
+};
 
 type ProgramsResponse = {
   programs: Array<{
@@ -174,11 +250,13 @@ export async function getProgramsContent(): Promise<FrontendProgram[]> {
       prerequisites: program.prerequisites,
     }));
   } catch {
-    return PROGRAMS;
+    return [];
   }
 }
 
-export async function getProgramDetailContent(slug: string): Promise<FrontendProgram | null> {
+export async function getProgramDetailContent(
+  slug: string,
+): Promise<FrontendProgram | null> {
   try {
     const data = await fetchBackendJson<ProgramDetailResponse>(`/programs/${slug}/`);
     return {
@@ -199,7 +277,7 @@ export async function getProgramDetailContent(slug: string): Promise<FrontendPro
       prerequisites: data.program.prerequisites,
     };
   } catch {
-    return PROGRAMS.find((program) => program.slug === slug) ?? null;
+    return null;
   }
 }
 
@@ -233,9 +311,9 @@ export async function getCommunityContent() {
     };
   } catch {
     return {
-      events: COMMUNITY_EVENTS,
-      alumni: ALUMNI_SPOTLIGHT,
-      stats: COMMUNITY_STATS,
+      events: [] as FrontendEvent[],
+      alumni: [] as FrontendAlumni[],
+      stats: [] as FrontendCommunityStat[],
     };
   }
 }
@@ -266,9 +344,9 @@ export async function getCareersContent() {
     };
   } catch {
     return {
-      roles: OPEN_ROLES,
-      partners: PARTNER_COMPANIES,
-      stats: HIRING_STATS,
+      roles: [] as FrontendRole[],
+      partners: [] as FrontendPartner[],
+      stats: [] as FrontendHiringStat[],
     };
   }
 }
@@ -303,9 +381,9 @@ export async function getResearchContent() {
     };
   } catch {
     return {
-      areas: RESEARCH_AREAS,
-      papers: RECENT_PAPERS,
-      stats: RESEARCH_STATS,
+      areas: [] as FrontendResearchArea[],
+      papers: [] as FrontendResearchPaper[],
+      stats: [] as FrontendResearchStat[],
     };
   }
 }
@@ -326,55 +404,8 @@ export async function getAdmissionsContent() {
     };
   } catch {
     return {
-      steps: [
-        {
-          step: "01",
-          title: "Submit Application",
-          description:
-            "Share your contact details, course interest, background, and schedule preference.",
-        },
-        {
-          step: "02",
-          title: "Admissions Review",
-          description:
-            "Your application is saved in the admissions backend so the team can review fit, availability, and any follow-up questions.",
-        },
-        {
-          step: "03",
-          title: "Admissions Call",
-          description:
-            "The team can reach out to confirm your goals, answer questions, and explain available discount slots.",
-        },
-        {
-          step: "04",
-          title: "Enrollment",
-          description:
-            "Accepted applicants receive the next steps for payment, scheduling, and cohort onboarding.",
-        },
-      ],
-      faqs: [
-        {
-          q: "Do I need prior experience to apply?",
-          a: "Several courses are beginner friendly. IoT and fabrication benefit from curiosity about hardware or design, but the application is built to understand your goals rather than screen out new learners.",
-        },
-        { q: "How long are the courses?", a: "The short courses run for 3 months." },
-        {
-          q: "What is the cost of the programs?",
-          a: "The current published fee in the HiT materials is GHC 1200 per short course. Early discount slots are available for selected applicants.",
-        },
-        {
-          q: "Can I study part-time or remotely?",
-          a: "School hours are listed as 10 am to 3 pm, with evening and weekend options also available. Speak to admissions to confirm the option for your course.",
-        },
-        {
-          q: "Will I receive a certificate?",
-          a: "The HiT materials reference certificates awarded through the KNUST pathway for these short courses.",
-        },
-        {
-          q: "What happens after I submit?",
-          a: "Your details are stored in the admissions backend and the team can follow up for review, scheduling, and next steps.",
-        },
-      ],
+      steps: [] as Array<{ step: string; title: string; description: string }>,
+      faqs: [] as Array<{ q: string; a: string }>,
     };
   }
 }

@@ -3,9 +3,9 @@
 import { motion } from "framer-motion";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { ProgramCard } from "@/components/ui/Card";
-import { PROGRAMS } from "@/constants/programs";
+import type { FrontendProgram } from "@/lib/content-api";
 
-export const ProgramsSection = () => {
+export function ProgramsSection({ programs }: { programs: FrontendProgram[] }) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -31,7 +31,7 @@ export const ProgramsSection = () => {
       <SectionHeading
         subtitle="Our Programs"
         title="Short Courses Built for Practical Skill"
-        description="Three-month courses in software, IoT, fabrication, marketing, and business, designed around hands-on learning and recognizable certification."
+        description="Current programs published from the HiT backend."
       />
 
       <motion.div
@@ -41,7 +41,7 @@ export const ProgramsSection = () => {
         viewport={{ once: true, margin: "-100px" }}
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
       >
-        {PROGRAMS.map((program) => (
+        {programs.map((program) => (
           <motion.div key={program.id} variants={itemVariants}>
             <ProgramCard
               title={program.title}
@@ -54,4 +54,4 @@ export const ProgramsSection = () => {
       </motion.div>
     </Section>
   );
-};
+}

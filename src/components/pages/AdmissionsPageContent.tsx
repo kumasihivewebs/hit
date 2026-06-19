@@ -62,73 +62,71 @@ export function AdmissionsPageContent({
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-400">
             <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-              GHC 1200 fee
-            </span>
-            <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-              3-month courses
-            </span>
-            <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
               Backend-connected admissions flow
             </span>
           </div>
         </motion.div>
       </section>
 
-      <section className="w-full py-20 bg-black border-t border-white/10">
-        <div className="section-container">
-          <FadeIn className="space-y-4 mb-16">
-            <p className="text-orange-400 font-semibold uppercase tracking-wider text-sm">
-              How It Works
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold">
-              The Admissions Process
-            </h2>
-          </FadeIn>
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {steps.map((step, index) => (
-              <StaggerItem key={step.step} className="relative space-y-4">
-                {index < steps.length - 1 ? (
-                  <div className="hidden lg:block absolute top-7 left-[calc(100%-24px)] w-full h-px bg-white/10 z-0" />
-                ) : null}
-                <div className="relative z-10 w-14 h-14 rounded-full bg-orange-600/20 border border-orange-600/40 flex items-center justify-center">
-                  <span className="text-orange-400 font-bold">{step.step}</span>
-                </div>
-                <h3 className="text-lg font-bold">{step.title}</h3>
-                <p className="text-slate-300 text-sm leading-relaxed">
-                  {step.description}
-                </p>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
-
-      <section
-        id="apply"
-        className="w-full py-20 bg-slate-950 border-t border-white/10"
-      >
-        <FadeIn className="section-container max-w-2xl mx-auto">
-          <div className="space-y-4 mb-12">
-            <p className="text-orange-400 font-semibold uppercase tracking-wider text-sm">
-              Apply Now
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold">
-              Start Your Application
-            </h2>
-            <p className="text-slate-300">
-              This form now writes directly to the HiT backend, so the
-              admissions team has a real submission record to review.
-            </p>
+      {steps.length > 0 ? (
+        <section className="w-full py-20 bg-black border-t border-white/10">
+          <div className="section-container">
+            <FadeIn className="space-y-4 mb-16">
+              <p className="text-orange-400 font-semibold uppercase tracking-wider text-sm">
+                How It Works
+              </p>
+              <h2 className="text-3xl sm:text-4xl font-bold">
+                The Admissions Process
+              </h2>
+            </FadeIn>
+            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {steps.map((step, index) => (
+                <StaggerItem key={step.step} className="relative space-y-4">
+                  {index < steps.length - 1 ? (
+                    <div className="hidden lg:block absolute top-7 left-[calc(100%-24px)] w-full h-px bg-white/10 z-0" />
+                  ) : null}
+                  <div className="relative z-10 w-14 h-14 rounded-full bg-orange-600/20 border border-orange-600/40 flex items-center justify-center">
+                    <span className="text-orange-400 font-bold">{step.step}</span>
+                  </div>
+                  <h3 className="text-lg font-bold">{step.title}</h3>
+                  <p className="text-slate-300 text-sm leading-relaxed">
+                    {step.description}
+                  </p>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
           </div>
+        </section>
+      ) : null}
 
-          <AdmissionApplicationForm
-            programs={programs.map((program) => ({
-              id: program.id,
-              title: program.title,
-            }))}
-          />
-        </FadeIn>
-      </section>
+      {programs.length > 0 ? (
+        <section
+          id="apply"
+          className="w-full py-20 bg-slate-950 border-t border-white/10"
+        >
+          <FadeIn className="section-container max-w-2xl mx-auto">
+            <div className="space-y-4 mb-12">
+              <p className="text-orange-400 font-semibold uppercase tracking-wider text-sm">
+                Apply Now
+              </p>
+              <h2 className="text-3xl sm:text-4xl font-bold">
+                Start Your Application
+              </h2>
+              <p className="text-slate-300">
+                This form now writes directly to the HiT backend, so the
+                admissions team has a real submission record to review.
+              </p>
+            </div>
+
+            <AdmissionApplicationForm
+              programs={programs.map((program) => ({
+                id: program.id,
+                title: program.title,
+              }))}
+            />
+          </FadeIn>
+        </section>
+      ) : null}
 
       <section
         id="schedule"
@@ -159,41 +157,43 @@ export function AdmissionsPageContent({
         </FadeIn>
       </section>
 
-      <section className="w-full py-20 bg-slate-950 border-t border-white/10">
-        <div className="section-container max-w-3xl mx-auto">
-          <FadeIn className="space-y-4 mb-12">
-            <p className="text-orange-400 font-semibold uppercase tracking-wider text-sm">
-              FAQ
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold">
-              Common Questions
-            </h2>
-          </FadeIn>
-          <div className="space-y-3">
-            {faqs.map((faq, index) => (
-              <div
-                key={faq.q}
-                className="rounded-xl border border-white/10 bg-white/5 overflow-hidden"
-              >
-                <button
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full flex items-center justify-between gap-4 p-6 text-left hover:bg-white/5 transition-colors"
+      {faqs.length > 0 ? (
+        <section className="w-full py-20 bg-slate-950 border-t border-white/10">
+          <div className="section-container max-w-3xl mx-auto">
+            <FadeIn className="space-y-4 mb-12">
+              <p className="text-orange-400 font-semibold uppercase tracking-wider text-sm">
+                FAQ
+              </p>
+              <h2 className="text-3xl sm:text-4xl font-bold">
+                Common Questions
+              </h2>
+            </FadeIn>
+            <div className="space-y-3">
+              {faqs.map((faq, index) => (
+                <div
+                  key={faq.q}
+                  className="rounded-xl border border-white/10 bg-white/5 overflow-hidden"
                 >
-                  <span className="font-semibold">{faq.q}</span>
-                  <span className="text-orange-400 shrink-0 text-xl leading-none">
-                    {openFaq === index ? "−" : "+"}
-                  </span>
-                </button>
-                {openFaq === index ? (
-                  <div className="px-6 pb-6 text-slate-300 leading-relaxed">
-                    {faq.a}
-                  </div>
-                ) : null}
-              </div>
-            ))}
+                  <button
+                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                    className="w-full flex items-center justify-between gap-4 p-6 text-left hover:bg-white/5 transition-colors"
+                  >
+                    <span className="font-semibold">{faq.q}</span>
+                    <span className="text-orange-400 shrink-0 text-xl leading-none">
+                      {openFaq === index ? "−" : "+"}
+                    </span>
+                  </button>
+                  {openFaq === index ? (
+                    <div className="px-6 pb-6 text-slate-300 leading-relaxed">
+                      {faq.a}
+                    </div>
+                  ) : null}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
     </>
   );
 }
