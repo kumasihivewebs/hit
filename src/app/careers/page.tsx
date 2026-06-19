@@ -2,13 +2,14 @@ import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FadeIn, FadeInOnLoad, StaggerContainer, StaggerItem } from "@/components/ui/Animate";
-import { OPEN_ROLES, PARTNER_COMPANIES, HIRING_STATS } from "@/constants/jobs";
+import { CareerInquiryForm } from "@/components/forms/CareerInquiryForm";
+import { getCareersContent } from "@/lib/content-api";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Careers — HiT",
   description:
-    "Join the team building Africa's leading technology institute. Open roles in education, engineering, design, and community.",
+    "Join the team building practical technology education at HiT through operations, facilitation, partnerships, and community work.",
 };
 
 const JOB_TYPE_COLORS: Record<string, string> = {
@@ -16,12 +17,13 @@ const JOB_TYPE_COLORS: Record<string, string> = {
   "Part-time / Advisory": "bg-blue-600/20 text-blue-300 border-blue-600/30",
 };
 
-export default function CareersPage() {
+export default async function CareersPage() {
+  const careersContent = await getCareersContent();
+
   return (
     <div className="w-full flex flex-col min-h-screen bg-slate-950">
       <Navbar />
       <main id="main-content" className="flex-1">
-        {/* Hero */}
         <section className="relative w-full py-24 sm:py-32 bg-linear-to-b from-slate-950 to-black overflow-hidden">
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-20 right-1/4 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl" />
@@ -33,41 +35,40 @@ export default function CareersPage() {
                 Careers at HiT
               </p>
               <h1 className="text-5xl sm:text-6xl font-black leading-tight">
-                Help Build Africa&apos;s{" "}
+                Help Build Practical{" "}
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-orange-600">
-                  Tech Future
+                  Tech Learning
                 </span>
               </h1>
               <p className="text-xl text-slate-300 leading-relaxed">
-                We&apos;re a small team doing high-leverage work. Every person at
-                HiT directly shapes the engineers, researchers, and founders who
-                will define Africa&apos;s technology industry.
+                HiT needs people who care about practical teaching, learner
+                support, and building a stronger technology community from
+                Kumasi.
               </p>
               <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-400">
                 <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-                  Mission-driven
+                  Education-first
                 </span>
                 <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-                  Competitive pay + equity
+                  Practical, mission-driven work
                 </span>
                 <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-                  Remote-friendly
+                  Backend-connected hiring form
                 </span>
               </div>
             </FadeInOnLoad>
           </div>
         </section>
 
-        {/* Graduate Outcomes */}
         <section className="w-full py-16 bg-black border-y border-white/10">
           <div className="section-container">
             <FadeIn>
               <p className="text-center text-slate-400 text-sm uppercase tracking-wider font-semibold mb-8">
-                Graduate outcomes — what you&apos;re helping students achieve
+                What the organisation is building around
               </p>
             </FadeIn>
             <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-              {HIRING_STATS.map((stat) => (
+              {careersContent.stats.map((stat) => (
                 <StaggerItem key={stat.label}>
                   <p className="text-3xl sm:text-4xl font-bold text-orange-400">
                     {stat.value}
@@ -79,7 +80,6 @@ export default function CareersPage() {
           </div>
         </section>
 
-        {/* Open Roles */}
         <section className="w-full py-20 sm:py-28 bg-slate-950">
           <div className="section-container">
             <FadeIn className="space-y-4 mb-16">
@@ -90,12 +90,13 @@ export default function CareersPage() {
                 Join Our Team
               </h2>
               <p className="text-slate-300 text-lg max-w-2xl">
-                We hire people who are exceptional at their craft and deeply
-                care about education and the African tech ecosystem.
+                These roles are focused on delivering consistent short-course
+                quality, practical learner support, and a healthier community
+                rhythm.
               </p>
             </FadeIn>
             <StaggerContainer className="space-y-4">
-              {OPEN_ROLES.map((role) => (
+              {careersContent.roles.map((role) => (
                 <StaggerItem key={role.id}>
                   <div className="group rounded-2xl border border-white/10 bg-white/5 p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
                     <div className="flex flex-col lg:flex-row lg:items-start gap-6">
@@ -136,7 +137,7 @@ export default function CareersPage() {
                           href="#apply"
                           className="inline-flex items-center justify-center px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg transition-colors"
                         >
-                          Apply
+                          Express Interest
                         </a>
                       </div>
                     </div>
@@ -147,23 +148,22 @@ export default function CareersPage() {
           </div>
         </section>
 
-        {/* Partner Companies */}
         <section className="w-full py-20 bg-black border-t border-white/10">
           <div className="section-container">
             <FadeIn className="space-y-4 mb-12">
               <p className="text-orange-400 font-semibold uppercase tracking-wider text-sm">
-                Hiring Partners
+                Partners
               </p>
               <h2 className="text-3xl sm:text-4xl font-bold">
-                Where Our Graduates Get Hired
+                The Network Around the Work
               </h2>
               <p className="text-slate-300 text-lg max-w-2xl">
-                These companies actively recruit from HiT. Graduating students
-                get direct introductions to their recruiting teams.
+                These relationships are less about prestige and more about
+                practical support, exposure, and continuity for learners.
               </p>
             </FadeIn>
             <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {PARTNER_COMPANIES.map((company) => (
+              {careersContent.partners.map((company) => (
                 <StaggerItem key={company.name}>
                   <div className="flex items-center gap-4 p-6 rounded-xl border border-white/10 bg-white/5 h-full">
                     <span className="text-3xl">{company.logo}</span>
@@ -178,31 +178,30 @@ export default function CareersPage() {
           </div>
         </section>
 
-        {/* Apply CTA */}
         <section id="apply" className="w-full py-20 bg-slate-950 border-t border-white/10">
-          <FadeIn className="section-container max-w-2xl mx-auto text-center space-y-6">
-            <h2 className="text-3xl sm:text-4xl font-bold">
-              Don&apos;t see the right role?
-            </h2>
-            <p className="text-slate-300 text-lg">
-              We&apos;re always interested in exceptional people. Send a brief note
-              about who you are and what you&apos;d contribute — we read everything.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <a
-                href="mailto:careers@hit.edu"
-                className="inline-flex items-center justify-center px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg transition-colors text-lg"
-              >
-                Send an Introduction
-              </a>
+          <div className="section-container max-w-3xl mx-auto">
+            <FadeIn className="text-center space-y-6 mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold">
+                Don&apos;t see the perfect role?
+              </h2>
+              <p className="text-slate-300 text-lg">
+                Send a short introduction anyway. This form now goes into the
+                backend hiring queue so the team can review general interest as
+                well as role-specific applicants.
+              </p>
+            </FadeIn>
+            <CareerInquiryForm
+              roles={careersContent.roles.map((role) => role.title)}
+            />
+            <div className="pt-8 text-center">
               <Link
                 href="/community"
                 className="inline-flex items-center justify-center px-8 py-4 border border-white/20 hover:bg-white/10 text-white font-semibold rounded-lg transition-colors text-lg"
               >
-                Meet Our Team
+                Meet the Community
               </Link>
             </div>
-          </FadeIn>
+          </div>
         </section>
       </main>
       <Footer />

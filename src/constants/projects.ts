@@ -1,50 +1,50 @@
 export const STUDENT_PROJECTS = [
   {
     id: "1",
-    title: "AI-Powered Agricultural Platform",
+    title: "Campus Event Companion App",
     description:
-      "Machine learning system that predicts crop diseases and recommends treatments for African farmers.",
-    tags: ["AI", "Agriculture", "Python"],
-    image: "🌾",
+      "A Flutter mobile app for cohort updates, class reminders, and event registration across the HiT community.",
+    tags: ["Flutter", "Mobile", "UI"],
+    image: "📱",
   },
   {
     id: "2",
-    title: "Smart City Traffic Management",
+    title: "Local Business Campaign Sprint",
     description:
-      "IoT and real-time data processing system to optimize traffic flow in African cities.",
-    tags: ["IoT", "Cloud", "Real-time"],
-    image: "🚦",
+      "A digital marketing campaign pack for a Kumasi business, including content plans, targeting, and reporting templates.",
+    tags: ["Marketing", "Content", "Analytics"],
+    image: "📣",
   },
   {
     id: "3",
-    title: "Autonomous Robot Navigator",
+    title: "Smart Soil Monitor",
     description:
-      "Robotics project combining computer vision, SLAM, and path planning algorithms.",
-    tags: ["Robotics", "CV", "Embedded"],
-    image: "🤖",
+      "An Arduino-based sensor prototype that captures moisture readings and displays them on a simple monitoring dashboard.",
+    tags: ["IoT", "Sensors", "Arduino"],
+    image: "🌱",
   },
   {
     id: "4",
-    title: "Healthcare Mobile Application",
+    title: "Student Portfolio Website",
     description:
-      "Full-stack healthcare app connecting patients with specialists across rural areas.",
-    tags: ["Fullstack", "Healthcare", "Mobile"],
-    image: "⚕️",
+      "A responsive web portfolio built with HTML, CSS, JavaScript, and beginner-friendly deployment workflows.",
+    tags: ["Web", "Frontend", "Portfolio"],
+    image: "💻",
   },
   {
     id: "5",
-    title: "Renewable Energy Monitoring System",
+    title: "Fabricated Product Enclosure",
     description:
-      "Solar farm monitoring with predictive maintenance using machine learning.",
-    tags: ["Energy", "ML", "Systems"],
-    image: "⚡",
+      "A CAD-to-fabrication workflow that takes a design from Fusion 360 into laser-cut and 3D-printed prototype parts.",
+    tags: ["CAD", "Fabrication", "3D Print"],
+    image: "🛠️",
   },
   {
     id: "6",
-    title: "Cybersecurity Threat Detection",
+    title: "Lean Venture Pitch Deck",
     description:
-      "Real-time network security system with anomaly detection and automated response.",
-    tags: ["Security", "Network", "Detection"],
-    image: "🔐",
+      "A business management capstone turning a simple idea into customer validation, pricing assumptions, and a practical go-to-market plan.",
+    tags: ["Business", "Strategy", "Pitch"],
+    image: "📈",
   },
 ];

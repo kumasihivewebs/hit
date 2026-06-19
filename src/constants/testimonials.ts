@@ -1,50 +1,50 @@
 export const TESTIMONIALS = [
   {
     id: "1",
-    name: "Amara Okafor",
-    role: "Fullstack Engineer at Andela",
+    name: "Abena Frimpong",
+    role: "Flutter learner, Kumasi cohort",
     content:
-      "HiT transformed my career. The project-based learning and industry mentorship gave me skills that matter. I went from student to working at a top tech company in 18 months.",
+      "HiT made software feel practical. I stopped just watching tutorials and started building complete mobile interfaces with confidence.",
     image: "👩‍💻",
   },
   {
     id: "2",
-    name: "Chisom Eze",
-    role: "AI Researcher at DeepMind",
+    name: "Yaw Ofori",
+    role: "IoT student project lead",
     content:
-      "The AI program at HiT is rigorous and practical. I built real ML systems, not just toy models. This directly led to my role in AI research at DeepMind.",
-    image: "👨‍💻",
+      "The hands-on sessions helped me understand hardware, sensors, and debugging in a way that theory alone never did.",
+    image: "🧰",
   },
   {
     id: "3",
-    name: "Zainab Hassan",
-    role: "Co-founder, TechStartup Africa",
+    name: "Mavis Owusu",
+    role: "Digital marketing participant",
     content:
-      "HiT's startup incubation program was invaluable. From ideation to first customers. Now my company is solving real problems for millions of Africans.",
-    image: "👩‍🔬",
+      "I came in unsure where to start. By the end, I had campaign plans, reporting skills, and work I could actually show clients.",
+    image: "📣",
   },
   {
     id: "4",
-    name: "Kofi Mensah",
-    role: "Robotics Engineer at Boston Dynamics",
+    name: "Kofi Adjei",
+    role: "Computer science short-course graduate",
     content:
-      "The robotics curriculum combined hardware and software in ways I hadn't seen elsewhere. The hands-on lab experience prepared me perfectly for advanced robotics work.",
-    image: "👨‍🔧",
+      "The course gave me a clearer path into programming. It connected the basics to real projects instead of leaving everything abstract.",
+    image: "💻",
   },
   {
     id: "5",
-    name: "Fatima Al-Rashid",
-    role: "Security Engineer at Google Cloud",
+    name: "Esi Nyarko",
+    role: "Digital fabrication learner",
     content:
-      "HiT taught me cybersecurity through real penetration testing and security research. The practical approach made me industry-ready from day one.",
-    image: "👩‍💻",
+      "Using fabrication tools and CAD software in the same workflow changed how I think about turning ideas into physical prototypes.",
+    image: "🛠️",
   },
   {
     id: "6",
-    name: "Marcus Obi",
-    role: "Product Designer at Linear",
+    name: "Nana Kwaku",
+    role: "Business management participant",
     content:
-      "The product design program focused on real user research and iterative design. I shipped actual products before graduating. That experience won me interviews everywhere.",
-    image: "👨‍🎨",
+      "HiT helped me structure my idea, test assumptions, and communicate it better. The practical coaching was the biggest difference.",
+    image: "📈",
   },
 ];

@@ -3,7 +3,10 @@ import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FadeIn, FadeInOnLoad } from "@/components/ui/Animate";
-import { PROGRAMS } from "@/constants/programs";
+import {
+  getProgramDetailContent,
+  getProgramsContent,
+} from "@/lib/content-api";
 import type { Metadata } from "next";
 
 interface Props {
@@ -11,12 +14,13 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return PROGRAMS.map((p) => ({ slug: p.slug }));
+  const programs = await getProgramsContent();
+  return programs.map((program) => ({ slug: program.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const program = PROGRAMS.find((p) => p.slug === slug);
+  const program = await getProgramDetailContent(slug);
   if (!program) return {};
   return {
     title: `${program.title} — HiT`,
@@ -26,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProgramDetailPage({ params }: Props) {
   const { slug } = await params;
-  const program = PROGRAMS.find((p) => p.slug === slug);
+  const program = await getProgramDetailContent(slug);
   if (!program) notFound();
 
   return (

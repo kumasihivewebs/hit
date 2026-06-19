@@ -2,16 +2,18 @@ import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FadeIn, FadeInOnLoad, StaggerContainer, StaggerItem } from "@/components/ui/Animate";
-import { RESEARCH_AREAS, RECENT_PAPERS, RESEARCH_STATS } from "@/constants/research";
+import { getResearchContent } from "@/lib/content-api";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Research — HiT",
   description:
-    "Applied research at HiT tackles Africa's real challenges in healthcare, agriculture, fintech, and smart cities using AI, robotics, and systems engineering.",
+    "HiT's applied research and prototype work explores practical learning tools, community technology pilots, fabrication workflows, and IoT experimentation.",
 };
 
-export default function ResearchPage() {
+export default async function ResearchPage() {
+  const researchContent = await getResearchContent();
+
   return (
     <div className="w-full flex flex-col min-h-screen bg-slate-950">
       <Navbar />
@@ -28,16 +30,16 @@ export default function ResearchPage() {
                 Research
               </p>
               <h1 className="text-5xl sm:text-6xl font-black leading-tight">
-                Technology That{" "}
+                Practical Inquiry That{" "}
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-orange-600">
-                  Solves Real Problems
+                  Supports Real Work
                 </span>
               </h1>
               <p className="text-xl text-slate-300 leading-relaxed">
-                HiT&apos;s applied research lab focuses on challenges specific to
-                Africa — healthcare, food security, financial inclusion, and
-                urban infrastructure. Our students and fellows publish in top
-                venues and build systems that reach millions.
+                HiT&apos;s research direction is intentionally practical. The
+                focus is on working briefs, prototype themes, learning
+                workflows, and community-centered technology experiments that
+                can improve how students build and how partners test ideas.
               </p>
             </FadeInOnLoad>
           </div>
@@ -46,7 +48,7 @@ export default function ResearchPage() {
         {/* Stats */}
         <section className="w-full py-16 bg-black border-y border-white/10">
           <StaggerContainer className="section-container grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            {RESEARCH_STATS.map((stat) => (
+            {researchContent.stats.map((stat) => (
               <StaggerItem key={stat.label}>
                 <p className="text-3xl sm:text-4xl font-bold text-orange-400">
                   {stat.value}
@@ -69,7 +71,7 @@ export default function ResearchPage() {
               </h2>
             </FadeIn>
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {RESEARCH_AREAS.map((area) => (
+              {researchContent.areas.map((area) => (
                 <StaggerItem key={area.id}>
                   <div className="rounded-2xl border border-white/10 bg-white/5 p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-300 space-y-4 h-full">
                     <div className="flex items-start justify-between">
@@ -112,15 +114,15 @@ export default function ResearchPage() {
               </p>
               <h2 className="text-3xl sm:text-4xl font-bold">Recent Papers</h2>
               <p className="text-slate-300 text-lg max-w-2xl">
-                Selected publications from our researchers and student fellows,
-                published at top venues worldwide.
+                Working notes, briefs, and prototype documentation from the
+                kinds of applied topics HiT is shaping around its short-course
+                ecosystem.
               </p>
             </FadeIn>
             <StaggerContainer className="space-y-4">
-              {RECENT_PAPERS.map((paper) => (
+              {researchContent.papers.map((paper) => (
                 <StaggerItem key={paper.id}>
-                  <a
-                    href={paper.link}
+                  <div
                     className="group flex flex-col sm:flex-row sm:items-center gap-4 p-6 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
                   >
                     <div className="flex-1 space-y-1">
@@ -137,7 +139,7 @@ export default function ResearchPage() {
                       </span>
                       <span className="text-slate-500 text-sm">{paper.area}</span>
                     </div>
-                  </a>
+                  </div>
                 </StaggerItem>
               ))}
             </StaggerContainer>
@@ -151,9 +153,9 @@ export default function ResearchPage() {
               Collaborate with Us
             </h2>
             <p className="text-slate-300 text-lg">
-              We partner with universities, governments, NGOs, and companies on
-              applied research projects. If your organisation has a problem
-              worth solving, we want to hear from you.
+              If your organisation has a practical problem worth exploring
+              through a pilot, learning tool, or prototype workflow, HiT is
+              open to conversations about collaboration.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Link

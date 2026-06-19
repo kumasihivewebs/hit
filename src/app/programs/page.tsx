@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FadeIn, FadeInOnLoad, StaggerContainer, StaggerItem } from "@/components/ui/Animate";
-import { PROGRAMS } from "@/constants/programs";
+import { getProgramsContent } from "@/lib/content-api";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,7 +11,9 @@ export const metadata: Metadata = {
     "Explore HiT's practical short courses in Flutter, digital marketing, IoT, computer science, digital fabrication, and business management.",
 };
 
-export default function ProgramsPage() {
+export default async function ProgramsPage() {
+  const programs = await getProgramsContent();
+
   return (
     <div className="w-full flex flex-col min-h-screen bg-slate-950">
       <Navbar />
@@ -57,7 +59,7 @@ export default function ProgramsPage() {
         <section className="w-full py-20 sm:py-24 bg-black">
           <div className="section-container">
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {PROGRAMS.map((program) => (
+              {programs.map((program) => (
                 <StaggerItem key={program.id}>
                   <Link
                     href={`/programs/${program.slug}`}
