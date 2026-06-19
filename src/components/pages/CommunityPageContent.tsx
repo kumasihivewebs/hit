@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { FadeIn, FadeInOnLoad, StaggerContainer, StaggerItem } from "@/components/ui/Animate";
 import { CommunityInterestForm } from "@/components/forms/CommunityInterestForm";
+import { ContentNotice } from "@/components/ui/ContentNotice";
 import type {
   FrontendAlumni,
   FrontendCommunityStat,
@@ -55,6 +56,17 @@ export function CommunityPageContent({
           </FadeInOnLoad>
         </div>
       </section>
+
+      {stats.length === 0 && events.length === 0 && alumni.length === 0 ? (
+        <section className="w-full py-16 bg-black border-y border-white/10">
+          <div className="section-container">
+            <ContentNotice
+              title="Community Updates Are Not Published Yet"
+              message="HiT has not published community statistics, events, or alumni highlights yet. This page will update as soon as new community content is added."
+            />
+          </div>
+        </section>
+      ) : null}
 
       {stats.length > 0 ? (
         <section className="w-full py-16 bg-black border-y border-white/10">

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/Animate";
 import { AdmissionApplicationForm } from "@/components/forms/AdmissionApplicationForm";
+import { ContentNotice } from "@/components/ui/ContentNotice";
 import type { FrontendProgram } from "@/lib/content-api";
 
 type AdmissionStep = {
@@ -99,34 +100,49 @@ export function AdmissionsPageContent({
         </section>
       ) : null}
 
-      {programs.length > 0 ? (
-        <section
-          id="apply"
-          className="w-full py-20 bg-slate-950 border-t border-white/10"
-        >
-          <FadeIn className="section-container max-w-2xl mx-auto">
-            <div className="space-y-4 mb-12">
-              <p className="text-orange-400 font-semibold uppercase tracking-wider text-sm">
-                Apply Now
-              </p>
-              <h2 className="text-3xl sm:text-4xl font-bold">
-                Start Your Application
-              </h2>
-              <p className="text-slate-300">
-                This form now writes directly to the HiT backend, so the
-                admissions team has a real submission record to review.
-              </p>
-            </div>
-
-            <AdmissionApplicationForm
-              programs={programs.map((program) => ({
-                id: program.id,
-                title: program.title,
-              }))}
+      {steps.length === 0 && faqs.length === 0 ? (
+        <section className="w-full py-16 bg-black border-t border-white/10">
+          <div className="section-container">
+            <ContentNotice
+              title="Admissions Guidance Will Be Added Soon"
+              message="HiT has not published admissions steps or frequently asked questions yet. Applicants can still submit the form below and the admissions team will review it in the admin portal."
             />
-          </FadeIn>
+          </div>
         </section>
       ) : null}
+
+      <section
+        id="apply"
+        className="w-full py-20 bg-slate-950 border-t border-white/10"
+      >
+        <FadeIn className="section-container max-w-2xl mx-auto">
+          <div className="space-y-4 mb-12">
+            <p className="text-orange-400 font-semibold uppercase tracking-wider text-sm">
+              Apply Now
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold">
+              Start Your Application
+            </h2>
+            <p className="text-slate-300">
+              Each application is saved in the HiT admin portal for review and
+              also notifies the admissions team by email.
+            </p>
+            {programs.length === 0 ? (
+              <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
+                No programs are published yet. Applicants can still submit the
+                form by typing the course they are interested in.
+              </div>
+            ) : null}
+          </div>
+
+          <AdmissionApplicationForm
+            programs={programs.map((program) => ({
+              id: program.id,
+              title: program.title,
+            }))}
+          />
+        </FadeIn>
+      </section>
 
       <section
         id="schedule"

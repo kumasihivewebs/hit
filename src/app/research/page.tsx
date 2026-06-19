@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FadeIn, FadeInOnLoad, StaggerContainer, StaggerItem } from "@/components/ui/Animate";
+import { ContentNotice } from "@/components/ui/ContentNotice";
 import { getResearchContent } from "@/lib/content-api";
 import type { Metadata } from "next";
 
@@ -13,6 +14,10 @@ export const metadata: Metadata = {
 
 export default async function ResearchPage() {
   const researchContent = await getResearchContent();
+  const hasResearchContent =
+    researchContent.stats.length > 0 ||
+    researchContent.areas.length > 0 ||
+    researchContent.papers.length > 0;
 
   return (
     <div className="w-full flex flex-col min-h-screen bg-slate-950">
@@ -46,20 +51,32 @@ export default async function ResearchPage() {
         </section>
 
         {/* Stats */}
-        <section className="w-full py-16 bg-black border-y border-white/10">
-          <StaggerContainer className="section-container grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            {researchContent.stats.map((stat) => (
-              <StaggerItem key={stat.label}>
-                <p className="text-3xl sm:text-4xl font-bold text-orange-400">
-                  {stat.value}
-                </p>
-                <p className="text-slate-400 text-sm mt-1">{stat.label}</p>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </section>
+        {hasResearchContent ? (
+          <section className="w-full py-16 bg-black border-y border-white/10">
+            <StaggerContainer className="section-container grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+              {researchContent.stats.map((stat) => (
+                <StaggerItem key={stat.label}>
+                  <p className="text-3xl sm:text-4xl font-bold text-orange-400">
+                    {stat.value}
+                  </p>
+                  <p className="text-slate-400 text-sm mt-1">{stat.label}</p>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </section>
+        ) : (
+          <section className="w-full py-16 bg-black border-y border-white/10">
+            <div className="section-container">
+              <ContentNotice
+                title="No Research Content Published Yet"
+                message="HiT has not published research statistics, focus areas, or papers yet. This page will show them here as soon as they are available."
+              />
+            </div>
+          </section>
+        )}
 
         {/* Research Areas */}
+        {researchContent.areas.length > 0 ? (
         <section className="w-full py-20 sm:py-28 bg-slate-950">
           <div className="section-container">
             <FadeIn className="space-y-4 mb-16">
@@ -104,8 +121,10 @@ export default async function ResearchPage() {
             </StaggerContainer>
           </div>
         </section>
+        ) : null}
 
         {/* Recent Papers */}
+        {researchContent.papers.length > 0 ? (
         <section className="w-full py-20 bg-black border-t border-white/10">
           <div className="section-container">
             <FadeIn className="space-y-4 mb-16">
@@ -145,6 +164,7 @@ export default async function ResearchPage() {
             </StaggerContainer>
           </div>
         </section>
+        ) : null}
 
         {/* Collaborate CTA */}
         <section className="w-full py-20 bg-slate-950 border-t border-white/10">

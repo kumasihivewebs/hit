@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FadeIn, FadeInOnLoad, StaggerContainer, StaggerItem } from "@/components/ui/Animate";
+import { ContentNotice } from "@/components/ui/ContentNotice";
 import { getProgramsContent } from "@/lib/content-api";
 import type { Metadata } from "next";
 
@@ -45,7 +46,7 @@ export default async function ProgramsPage() {
                   3-month programs
                 </span>
                 <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
-                  GHC 1200 fee
+                  GHC 2500 fee
                 </span>
                 <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10">
                   Early discounts available
@@ -58,46 +59,53 @@ export default async function ProgramsPage() {
         {/* Programs Grid */}
         <section className="w-full py-20 sm:py-24 bg-black">
           <div className="section-container">
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {programs.map((program) => (
-                <StaggerItem key={program.id}>
-                  <Link
-                    href={`/programs/${program.slug}`}
-                    className="group block rounded-2xl border border-white/10 bg-white/5 p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
-                  >
-                    <div className="flex items-start gap-5">
-                      <div className="text-5xl shrink-0">{program.icon}</div>
-                      <div className="space-y-2 flex-1">
-                        <div className="flex items-center justify-between gap-4">
-                          <h2 className="text-xl font-bold group-hover:text-orange-300 transition-colors">
-                            {program.title}
-                          </h2>
-                          <span className="text-xs font-semibold px-3 py-1 rounded-full bg-orange-600/10 text-orange-300 border border-orange-600/20 shrink-0">
-                            {program.duration}
-                          </span>
-                        </div>
-                        <p className="text-slate-300 leading-relaxed">
-                          {program.description}
-                        </p>
-                        <div className="flex flex-wrap gap-2 pt-3">
-                          {program.outcomes.slice(0, 3).map((outcome) => (
-                            <span
-                              key={outcome}
-                              className="px-2 py-0.5 text-xs bg-white/5 text-slate-400 rounded border border-white/10"
-                            >
-                              {outcome}
+            {programs.length > 0 ? (
+              <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {programs.map((program) => (
+                  <StaggerItem key={program.id}>
+                    <Link
+                      href={`/programs/${program.slug}`}
+                      className="group block rounded-2xl border border-white/10 bg-white/5 p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+                    >
+                      <div className="flex items-start gap-5">
+                        <div className="text-5xl shrink-0">{program.icon}</div>
+                        <div className="space-y-2 flex-1">
+                          <div className="flex items-center justify-between gap-4">
+                            <h2 className="text-xl font-bold group-hover:text-orange-300 transition-colors">
+                              {program.title}
+                            </h2>
+                            <span className="text-xs font-semibold px-3 py-1 rounded-full bg-orange-600/10 text-orange-300 border border-orange-600/20 shrink-0">
+                              {program.duration}
                             </span>
-                          ))}
+                          </div>
+                          <p className="text-slate-300 leading-relaxed">
+                            {program.description}
+                          </p>
+                          <div className="flex flex-wrap gap-2 pt-3">
+                            {program.outcomes.slice(0, 3).map((outcome) => (
+                              <span
+                                key={outcome}
+                                className="px-2 py-0.5 text-xs bg-white/5 text-slate-400 rounded border border-white/10"
+                              >
+                                {outcome}
+                              </span>
+                            ))}
+                          </div>
+                          <p className="pt-4 text-orange-400 font-semibold text-sm group-hover:text-orange-300 transition-colors">
+                            View program →
+                          </p>
                         </div>
-                        <p className="pt-4 text-orange-400 font-semibold text-sm group-hover:text-orange-300 transition-colors">
-                          View program →
-                        </p>
                       </div>
-                    </div>
-                  </Link>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
+                    </Link>
+                  </StaggerItem>
+                ))}
+              </StaggerContainer>
+            ) : (
+              <ContentNotice
+                title="No Programs Published Yet"
+                message="There are currently no courses listed in the HiT catalog. Please check back soon or contact admissions for the latest intake information."
+              />
+            )}
           </div>
         </section>
 

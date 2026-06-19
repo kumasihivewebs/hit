@@ -27,6 +27,7 @@ export function AdmissionApplicationForm({ programs }: { programs: Program[] }) 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const hasPrograms = programs.length > 0;
 
   function updateField(name: keyof typeof INITIAL_FORM, value: string) {
     setFormData((current) => ({ ...current, [name]: value }));
@@ -161,21 +162,38 @@ export function AdmissionApplicationForm({ programs }: { programs: Program[] }) 
         <label className="text-sm font-semibold text-slate-300">
           Program of Interest *
         </label>
-        <select
-          required
-          value={formData.program}
-          onChange={(e) => updateField("program", e.target.value)}
-          className="w-full px-4 py-3 rounded-lg bg-slate-900 border border-white/10 text-white focus:outline-none focus:border-orange-500 transition-colors"
-        >
-          <option value="" disabled>
-            Select a program
-          </option>
-          {programs.map((program) => (
-            <option key={program.id} value={program.title}>
-              {program.title}
+        {hasPrograms ? (
+          <select
+            required
+            value={formData.program}
+            onChange={(e) => updateField("program", e.target.value)}
+            className="w-full px-4 py-3 rounded-lg bg-slate-900 border border-white/10 text-white focus:outline-none focus:border-orange-500 transition-colors"
+          >
+            <option value="" disabled>
+              Select a program
             </option>
-          ))}
-        </select>
+            {programs.map((program) => (
+              <option key={program.id} value={program.title}>
+                {program.title}
+              </option>
+            ))}
+          </select>
+        ) : (
+          <>
+            <input
+              required
+              type="text"
+              value={formData.program}
+              onChange={(e) => updateField("program", e.target.value)}
+              placeholder="Enter the course or program you want"
+              className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500 focus:bg-white/10 transition-colors"
+            />
+            <p className="text-xs text-slate-500">
+              No programs are published yet, so applicants can type their course
+              interest manually.
+            </p>
+          </>
+        )}
       </div>
 
       <div className="space-y-2">

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { ProgramCard } from "@/components/ui/Card";
+import { ContentNotice } from "@/components/ui/ContentNotice";
 import type { FrontendProgram } from "@/lib/content-api";
 
 export function ProgramsSection({ programs }: { programs: FrontendProgram[] }) {
@@ -34,24 +35,31 @@ export function ProgramsSection({ programs }: { programs: FrontendProgram[] }) {
         description="Current programs published from the HiT backend."
       />
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-      >
-        {programs.map((program) => (
-          <motion.div key={program.id} variants={itemVariants}>
-            <ProgramCard
-              title={program.title}
-              description={program.description}
-              icon={program.icon}
-              slug={program.slug}
-            />
-          </motion.div>
-        ))}
-      </motion.div>
+      {programs.length > 0 ? (
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {programs.map((program) => (
+            <motion.div key={program.id} variants={itemVariants}>
+              <ProgramCard
+                title={program.title}
+                description={program.description}
+                icon={program.icon}
+                slug={program.slug}
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+      ) : (
+        <ContentNotice
+          title="Programs Will Appear Here"
+          message="HiT has not published any programs yet. Please check back soon or contact admissions for current course information."
+        />
+      )}
     </Section>
   );
 }

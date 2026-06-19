@@ -3,6 +3,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FadeIn, FadeInOnLoad, StaggerContainer, StaggerItem } from "@/components/ui/Animate";
 import { CareerInquiryForm } from "@/components/forms/CareerInquiryForm";
+import { ContentNotice } from "@/components/ui/ContentNotice";
 import { getCareersContent } from "@/lib/content-api";
 import type { Metadata } from "next";
 
@@ -19,6 +20,10 @@ const JOB_TYPE_COLORS: Record<string, string> = {
 
 export default async function CareersPage() {
   const careersContent = await getCareersContent();
+  const hasCareerContent =
+    careersContent.stats.length > 0 ||
+    careersContent.roles.length > 0 ||
+    careersContent.partners.length > 0;
 
   return (
     <div className="w-full flex flex-col min-h-screen bg-slate-950">
@@ -60,6 +65,7 @@ export default async function CareersPage() {
           </div>
         </section>
 
+        {hasCareerContent ? (
         <section className="w-full py-16 bg-black border-y border-white/10">
           <div className="section-container">
             <FadeIn>
@@ -79,7 +85,18 @@ export default async function CareersPage() {
             </StaggerContainer>
           </div>
         </section>
+        ) : (
+        <section className="w-full py-16 bg-black border-y border-white/10">
+          <div className="section-container">
+            <ContentNotice
+              title="No Career Content Published Yet"
+              message="HiT has not published hiring statistics, open roles, or partner details yet. Visitors can still use the form below to express interest."
+            />
+          </div>
+        </section>
+        )}
 
+        {careersContent.roles.length > 0 ? (
         <section className="w-full py-20 sm:py-28 bg-slate-950">
           <div className="section-container">
             <FadeIn className="space-y-4 mb-16">
@@ -147,7 +164,9 @@ export default async function CareersPage() {
             </StaggerContainer>
           </div>
         </section>
+        ) : null}
 
+        {careersContent.partners.length > 0 ? (
         <section className="w-full py-20 bg-black border-t border-white/10">
           <div className="section-container">
             <FadeIn className="space-y-4 mb-12">
@@ -177,6 +196,7 @@ export default async function CareersPage() {
             </StaggerContainer>
           </div>
         </section>
+        ) : null}
 
         <section id="apply" className="w-full py-20 bg-slate-950 border-t border-white/10">
           <div className="section-container max-w-3xl mx-auto">
